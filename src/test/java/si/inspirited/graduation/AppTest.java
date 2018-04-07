@@ -6,7 +6,9 @@ import org.junit.Test;
 
 class AppTest {
     public static void main(String[] args) {
+
         incorrectFinalMessage(1);
+
     }
 
     @Test
