@@ -1,13 +1,13 @@
 package si.inspirited.graduation.domain.abstrct;
 
-public class AbstractNamedEntity extends AbstractBaseEntity{
+public abstract class NamedEntity extends BaseEntity {
 
     protected String name;
 
-    public AbstractNamedEntity() {
+    public NamedEntity() {
     }
 
-    protected AbstractNamedEntity(Integer id, String name) {
+    protected NamedEntity(Integer id, String name) {
         super(id);
         this.name = name;
     }

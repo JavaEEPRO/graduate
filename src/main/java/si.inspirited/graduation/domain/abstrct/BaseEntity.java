@@ -1,13 +1,13 @@
 package si.inspirited.graduation.domain.abstrct;
 
-public class AbstractBaseEntity {
+public abstract class BaseEntity {
 
     protected Integer id;
 
-    public AbstractBaseEntity() {
+    public BaseEntity() {
     }
 
-    protected AbstractBaseEntity(Integer id) {
+    protected BaseEntity(Integer id) {
         this.id = id;
     }
 
