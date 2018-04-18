@@ -5,13 +5,14 @@ import org.springframework.beans.support.PropertyComparator;
 import si.inspirited.graduation.domain.abstrct.NamedEntity;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Restaurant extends NamedEntity {
 
     private AtomicInteger votes;
 
-    private Set<Dish> dishes;
+    private Set<Dish> dishes = new ConcurrentHashMap<>().newKeySet();
 
     protected Set<Dish> getDishesInternal() {
         if (this.dishes == null) {
