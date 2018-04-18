@@ -10,7 +10,8 @@ public class User extends NamedEntity {
 
     private String password;
 
-    private LocalDateTime lastVoted;
+    private LocalDateTime lastVotedDateTime;
+    private Restaurant lastVotedRestaurant;
 
     private Set<Role> roles;
 
@@ -18,17 +19,18 @@ public class User extends NamedEntity {
     }
 
     public User(User u) {
-        this(u.getId(), u.getName(), u.getPassword(), u.getLastVoted(), u.getRoles());
+        this(u.getId(), u.getName(), u.getPassword(), u.getLastVotedDateTime(), u.getLastVotedRestaurant(), u.getRoles());
     }
 
     public User(Integer id, String name, String password, Role role, Role... roles) {
-        this(id, name, password, null, EnumSet.of(role, roles));      //lastVoted mut be reviewed here
+        this(id, name, password, null, null, EnumSet.of(role, roles));      //lastVoted mut be reviewed here
     }
 
-    public User(Integer id, String name, String password, LocalDateTime lastVoted, Collection<Role> roles) {
+    public User(Integer id, String name, String password, LocalDateTime lastVotedDateTime, Restaurant lastVotedRestaurant, Collection<Role> roles) {
         super(id, name);
         this.password = password;
-        this.lastVoted = lastVoted;
+        this.lastVotedDateTime = lastVotedDateTime;
+        this.lastVotedRestaurant = lastVotedRestaurant;
         setRoles(roles);
     }
 
@@ -40,12 +42,20 @@ public class User extends NamedEntity {
         this.password = password;
     }
 
-    public LocalDateTime getLastVoted() {
-        return lastVoted;
+    public LocalDateTime getLastVotedDateTime() {
+        return lastVotedDateTime;
     }
 
-    public void setLastVoted(LocalDateTime lastVoted) {
-        this.lastVoted = lastVoted;
+    public void setLastVotedDateTime(LocalDateTime lastVotedDateTime) {
+        this.lastVotedDateTime = lastVotedDateTime;
+    }
+
+    public Restaurant getLastVotedRestaurant() {
+        return lastVotedRestaurant;
+    }
+
+    public void setLastVotedRestaurant(Restaurant lastVotedRestaurant) {
+        this.lastVotedRestaurant = lastVotedRestaurant;
     }
 
     public Set<Role> getRoles() {
