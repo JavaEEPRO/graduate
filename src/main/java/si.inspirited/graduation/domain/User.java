@@ -91,10 +91,9 @@ public class User extends NamedEntity {
     //reg. user functions:
 
     public boolean addVote(Restaurant restaurant) {
-        if (!getRoles().contains(Role.ROLE_ADMIN)) {return false;}
+        if (!getRoles().contains(Role.ROLE_USER)) {return false;}
         restaurant.increaseVotes();
         return true;
     }
-
 
 }
