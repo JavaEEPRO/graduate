@@ -65,4 +65,26 @@ public class User extends NamedEntity {
     public void setRoles(Collection<Role> roles) {
         this.roles = CollectionUtils.isEmpty(roles) ? Collections.emptySet() : EnumSet.copyOf(roles);
     }
+
+    //admin functions:
+
+    public Restaurant addRestaurant(String restaurantName) {
+        return  new Restaurant();
+    }
+
+    public void removeRestaurant(Restaurant restaurant) {}
+
+    public Dish addDish(Restaurant restaurant, String dishName) {
+        return new Dish();
+    }
+
+    public void removeDish(Dish dish) {}
+
+    //reg. user functions:
+
+    public boolean addVote(Restaurant restaurant) {
+        return true;
+    }
+
+
 }
