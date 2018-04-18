@@ -69,7 +69,9 @@ public class User extends NamedEntity {
     //admin functions:
 
     public Restaurant addRestaurant(String restaurantName) {
-        return  new Restaurant();
+        Restaurant restaurant = new Restaurant();
+        restaurant.setName(restaurantName);
+        return restaurant;
     }
 
     public void removeRestaurant(Restaurant restaurant) {}
@@ -78,7 +80,7 @@ public class User extends NamedEntity {
         return new Dish();
     }
 
-    public void removeDish(Dish dish) {}
+    public void removeDish(Restaurant restaurant, Dish dish) {}
 
     //reg. user functions:
 
