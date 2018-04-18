@@ -72,7 +72,11 @@ public class Restaurant extends NamedEntity {
         return votes;
     }
 
-    public void setVotes(AtomicInteger votes) {
-        this.votes = votes;
+    public int increaseVotes() {
+        return votes.incrementAndGet();
+    }
+
+    public int decreaseVotes() {
+        return votes.decrementAndGet();
     }
 }
