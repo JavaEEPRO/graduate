@@ -83,6 +83,7 @@ public class User extends NamedEntity {
     //reg. user functions:
 
     public boolean addVote(Restaurant restaurant) {
+        restaurant.increaseVotes();
         return true;
     }
 
