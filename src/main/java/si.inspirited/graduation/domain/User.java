@@ -69,22 +69,29 @@ public class User extends NamedEntity {
     //admin functions:
 
     public Restaurant addRestaurant(String restaurantName) {
+        if (!getRoles().contains(Role.ROLE_ADMIN)) {return null;}
         Restaurant restaurant = new Restaurant();
         restaurant.setName(restaurantName);
         return restaurant;
     }
 
-    public void removeRestaurant(Restaurant restaurant) {}
+    public void removeRestaurant(Restaurant restaurant) {
+        if (!getRoles().contains(Role.ROLE_ADMIN)) {return;}
+    }
 
     public Dish addDish(Restaurant restaurant, String dishName) {
+        if (!getRoles().contains(Role.ROLE_ADMIN)) {return null;}
         return new Dish();
     }
 
-    public void removeDish(Restaurant restaurant, Dish dish) {}
+    public void removeDish(Restaurant restaurant, Dish dish) {
+        if (!getRoles().contains(Role.ROLE_ADMIN)) {return;}
+    }
 
     //reg. user functions:
 
     public boolean addVote(Restaurant restaurant) {
+        if (!getRoles().contains(Role.ROLE_ADMIN)) {return false;}
         restaurant.increaseVotes();
         return true;
     }
