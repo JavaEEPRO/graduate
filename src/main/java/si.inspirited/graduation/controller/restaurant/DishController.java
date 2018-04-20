@@ -19,4 +19,6 @@ public class DishController {
     public String removeDish() {return "";}
 
     public String updateDish() {return "";}
+
+    public String allDishes() {return "";} //returns all dishes of restaurant
 }
