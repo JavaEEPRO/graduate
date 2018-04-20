@@ -7,15 +7,17 @@ import si.inspirited.graduation.service.RestaurantSvc;
 @Controller
 public class VoteController {
 
+    //service
     private final RestaurantSvc service;
 
+    //constructor initializes service
     @Autowired
     public VoteController(RestaurantSvc service) {
         this.service = service;
     }
 
-    public String addVote() {return "";}
+    public String add() {return "redirect:";}   //[redirect must be reviewed here]
 
-    public String undoVote() {return "";}
+    public String undo() {return "redirect:";}  //[redirect must be reviewed here]
 
 }

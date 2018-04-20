@@ -25,14 +25,14 @@ public class RestaurantController {
     public String initCreationForm() {return VIEWS_RESTAURANT_CREATE_OR_UPDATE_FORM;}
     public String processCreationForm() {return "redirect:";}            //[redirect must be reviewed here]
 
-    public String initFindForm() {return VIEWS_RESTAURANT_SEARCH_FORM;}   // returns list of restaurants with their dishes and votes
-    public String processFindForm() {return VIEWS_RESTAURANTS_LIST;}
-
-    public String showRestaurant() {return VIEWS_RESTAURANT_DETAILS;}
-
     public String initUpdateForm() {return VIEWS_RESTAURANT_CREATE_OR_UPDATE_FORM;}
     public String processUpdateForm() {return "redirect:" + VIEWS_RESTAURANT_DETAILS;}            //[redirect must be reviewed here]
 
-    public String removeRestaurant() {return VIEWS_RESTAURANTS_LIST;}    //returns modified list of restaurants after removing restaurant
+    public String initFindForm() {return VIEWS_RESTAURANT_SEARCH_FORM;}   // returns list of restaurants with their dishes and votes
+    public String processFindForm() {return VIEWS_RESTAURANTS_LIST;}
+
+    public String show() {return VIEWS_RESTAURANT_DETAILS;}
+
+    public String remove() {return VIEWS_RESTAURANTS_LIST;}    //returns modified list of restaurants after removing restaurant
 
 }
