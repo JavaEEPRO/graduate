@@ -1,4 +1,4 @@
-package si.inspirited.graduation.controller.restaurant;
+package si.inspirited.graduation.web.restaurant;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

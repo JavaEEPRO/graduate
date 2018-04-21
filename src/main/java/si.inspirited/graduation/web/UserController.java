@@ -1,4 +1,4 @@
-package si.inspirited.graduation.controller;
+package si.inspirited.graduation.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

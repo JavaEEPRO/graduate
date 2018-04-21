@@ -1,4 +1,4 @@
-package si.inspirited.graduation.controller.restaurant;
+package si.inspirited.graduation.web.restaurant;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +11,7 @@ public class RestaurantController {
     private final RestaurantSvc service;
 
     //views
-    private static final String VIEWS_RESTAURANT_CREATE_OR_UPDATE_FORM = "createOrUpdaterestaurantForm";
+    private static final String VIEWS_RESTAURANT_CREATE_OR_UPDATE_FORM = "createOrUpdateRestaurantForm";
     private static final String VIEWS_RESTAURANT_SEARCH_FORM = "findRestaurantForm";
     private static final String VIEWS_RESTAURANT_DETAILS = "restaurantDetails";
     private static final String VIEWS_RESTAURANTS_LIST = "restaurantsList";
@@ -33,6 +33,6 @@ public class RestaurantController {
 
     public String show() {return VIEWS_RESTAURANT_DETAILS;}
 
-    public String remove() {return VIEWS_RESTAURANTS_LIST;}    //returns modified list of restaurants after removing restaurant
+    public String remove() {return VIEWS_RESTAURANTS_LIST;}    //returns modified list of restaurants after removing the restaurant
 
 }
