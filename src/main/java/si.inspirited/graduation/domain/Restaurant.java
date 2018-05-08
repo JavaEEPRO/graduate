@@ -3,20 +3,17 @@ package si.inspirited.graduation.domain;
 import org.springframework.beans.support.MutableSortDefinition;
 import org.springframework.beans.support.PropertyComparator;
 import si.inspirited.graduation.domain.abstrct.NamedEntity;
-
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Restaurant extends NamedEntity implements Serializable {
 
-    private AtomicInteger votes;
-    private Set<User> usersVoted = new ConcurrentHashMap<>().newKeySet();  // maybe can be optimized (by FETCH UserSet who voted for this Restaurant)
+    private AtomicInteger votes;        // EAGER field
+    private Set<User> usersVoted = ConcurrentHashMap.newKeySet();  //TODO LAZY field; maybe can be optimized (by FETCH UserSet who voted for this Restaurant)
 
-    private Set<Dish> dishes = new ConcurrentHashMap<>().newKeySet();
+    private Set<Dish> dishes = ConcurrentHashMap.newKeySet();   //EAGER?? field
 
     //private Map<User, Map<LocalDateTime, Dish>> recentDishesByUser = new ConcurrentHashMap<>();   // map holds dishes history
 

@@ -2,7 +2,6 @@ package si.inspirited.graduation.domain;
 
 import org.springframework.util.CollectionUtils;
 import si.inspirited.graduation.domain.abstrct.NamedEntity;
-
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -10,8 +9,9 @@ public class User extends NamedEntity {
 
     private String password;
 
-    private LocalDateTime lastVotedDateTime;
-    private Restaurant lastVotedRestaurant;
+    private LocalDateTime lastVotedDateTime;  //TODO lazy init; redundant field; thinking about to make log of votes; maybe remove from constructor??
+    private Restaurant lastVotedRestaurant;  //TODO this field must be not initialized as a default, only by SETTER; not mapped to DB;  seems to be redurent; maybe must be only counted
+    private Set<Restaurant> votedFor;           // TODO constructor & g/setter
 
     private Set<Role> roles;
 
@@ -23,7 +23,7 @@ public class User extends NamedEntity {
     }
 
     public User(Integer id, String name, String password, Role role, Role... roles) {
-        this(id, name, password, null, null, EnumSet.of(role, roles));      //lastVoted mut be reviewed here
+        this(id, name, password, null, null, EnumSet.of(role, roles));      //TODO lastVoted mut be reviewed here
     }
 
     public User(Integer id, String name, String password, LocalDateTime lastVotedDateTime, Restaurant lastVotedRestaurant, Collection<Role> roles) {
@@ -69,7 +69,7 @@ public class User extends NamedEntity {
     //admin functions:
 
     public Restaurant addRestaurant(String restaurantName) {
-        if (!getRoles().contains(Role.ROLE_ADMIN)) {return null;}
+        if (!getRoles().contains(Role.ROLE_ADMIN)) {return null;}       //TODO let this be common method in util class
         Restaurant restaurant = new Restaurant();
         restaurant.setName(restaurantName);
         return restaurant;
@@ -80,7 +80,7 @@ public class User extends NamedEntity {
     }
 
     public Dish addDish(Restaurant restaurant, String dishName) {
-        if (!getRoles().contains(Role.ROLE_ADMIN)) {return null;}
+        if (!getRoles().contains(Role.ROLE_ADMIN)) {return null;}       //TODO let this be common method in util class
         return new Dish();
     }
 
@@ -91,7 +91,7 @@ public class User extends NamedEntity {
     //reg. user functions:
 
     public boolean addVote(Restaurant restaurant) {
-        if (!getRoles().contains(Role.ROLE_USER)) {return false;}
+        if (!getRoles().contains(Role.ROLE_USER)) {return false;}       //TODO let this be common method in util class OPT
         restaurant.increaseVotes();
         return true;
     }
