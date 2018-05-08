@@ -4,15 +4,23 @@ import org.springframework.beans.support.MutableSortDefinition;
 import org.springframework.beans.support.PropertyComparator;
 import si.inspirited.graduation.domain.abstrct.NamedEntity;
 
+import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Restaurant extends NamedEntity {
+public class Restaurant extends NamedEntity implements Serializable {
 
     private AtomicInteger votes;
+    private Set<User> usersVoted = new ConcurrentHashMap<>().newKeySet();  // maybe can be optimized (by FETCH UserSet who voted for this Restaurant)
 
     private Set<Dish> dishes = new ConcurrentHashMap<>().newKeySet();
+
+    //private Map<User, Map<LocalDateTime, Dish>> recentDishesByUser = new ConcurrentHashMap<>();   // map holds dishes history
+
+    //List<RecentDishHistoryItem> history = new CopyOnWriteArrayList<>();
 
     protected Set<Dish> getDishesInternal() {
         if (this.dishes == null) {
@@ -69,9 +77,11 @@ public class Restaurant extends NamedEntity {
         return null;
     }
 
-    public AtomicInteger getVotes() {
-        return votes;
+    public int getVotes() {
+        return votes.get();
     }
+
+    public void setVotes() {votes.set(usersVoted.size());}
 
     public int increaseVotes() {
         return votes.incrementAndGet();
@@ -80,4 +90,5 @@ public class Restaurant extends NamedEntity {
     public int decreaseVotes() {
         return votes.decrementAndGet();
     }
+
 }
